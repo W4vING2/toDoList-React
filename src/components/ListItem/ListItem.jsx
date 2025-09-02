@@ -8,7 +8,7 @@ export default function ListItem(props){
           id="list-item__checkbox"
         />
         <span className="list-item-span">{props.title}</span>
-        <button type="button" id="list-item__button">
+        <button type="button" id="list-item__button" onClick={props.onClick}>
           <img
             src="../../../public/xBtn.svg"
             alt="xBtn"
