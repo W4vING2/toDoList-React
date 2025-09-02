@@ -1,0 +1,23 @@
+@use '../../index';
+
+#form-search{
+  width: 356px;
+  max-height: 40px;
+  display: flex;
+  position: relative;
+}
+
+#form-search__input{
+  @include index.input-style(356px);
+}
+
+#form-search__btn{
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  &>img{
+    touch-action: none;
+  }
+}

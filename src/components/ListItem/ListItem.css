@@ -1,0 +1,67 @@
+@charset "UTF-8";
+li {
+  list-style: none;
+  display: flex;
+  height: 46px;
+  width: 356px;
+  position: relative;
+  margin-left: 0;
+  align-items: center;
+}
+li > span {
+  background-color: var(--pr-white);
+  color: var(--pr-black);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  width: 356px;
+  max-height: 40px;
+  min-height: 40px;
+  transition: var(--transition);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: start;
+  align-content: center;
+  padding-left: 42px;
+  z-index: 1;
+}
+li > input[type=checkbox] {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 1px solid var(--pr-black);
+  background-color: var(--pr-white);
+  border-radius: 4px;
+  z-index: 9999;
+  transition: var(--transition);
+}
+li > input[type=checkbox]:checked {
+  background-color: var(--pr-black);
+  border-color: var(--pr-black);
+}
+li > input[type=checkbox]:checked + span {
+  text-decoration: line-through;
+  color: #757575;
+}
+li > input[type=checkbox]::after {
+  content: "✔";
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 3px;
+  transform: rotate(-20deg);
+}
+li > button {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  z-index: 2;
+}
+
+/*# sourceMappingURL=ListItem.css.map */
