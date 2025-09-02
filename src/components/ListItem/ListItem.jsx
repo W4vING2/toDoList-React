@@ -9,12 +9,9 @@ export default function ListItem(props){
         />
         <span className="list-item-span">{props.title}</span>
         <button type="button" id="list-item__button" onClick={props.onClick}>
-          <img
-            src="../../../public/xBtn.svg"
-            alt="xBtn"
-            width="10px"
-            height="10px"
-          />
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 1L1 11M1 1L11 11" stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </button>
       </li>
   )
