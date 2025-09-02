@@ -8,13 +8,13 @@ export default function App() {
   const [value, setValue] = useState('')
   const [itemsArray, setItemsArray] = useState([])
   const [count, setCount] = useState(0)
-  const [inputValue, setInputValue] = useState('') // Добавляем состояние для input
+  const [inputValue, setInputValue] = useState('')
 
   function addItem(){
     if (!inputValue) return
     setItemsArray(prevItems => [...prevItems, inputValue])
     setCount(prevCount => prevCount + 1)
-    setInputValue('') // Очищаем input через состояние
+    setInputValue('')
   }
 
   function removeItem(indexToRemove){ // Принимаем индекс вместо event
@@ -62,7 +62,7 @@ export default function App() {
           <ListItem
             key={index}
             title={element}
-            onClick={() => removeItem(index)} // Передаем индекс
+            onClick={() => removeItem(index)}
           />
         ))}
       </ul>
