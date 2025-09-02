@@ -5,67 +5,67 @@ import ListItem from "./components/ListItem/ListItem.jsx";
 import {useState} from "react";
 
 export default function App() {
+  const [value, setValue] = useState('')
+  const [itemsArray, setItemsArray] = useState([])
+  const [count, setCount] = useState(0)
+  const [inputValue, setInputValue] = useState('') // Добавляем состояние для input
 
   function addItem(){
-    const title = document.querySelector('#form-add__input').value
-    if (!title) return
-    setItemsArray(() => {
-      const newArray = [...itemsArray, title]
-      return newArray
-    })
-    setCount(() => {
-      const numCount = Number(count)
-      return numCount + 1
-    })
-    document.querySelector('#form-add__input').value = ''
+    if (!inputValue) return
+    setItemsArray(prevItems => [...prevItems, inputValue])
+    setCount(prevCount => prevCount + 1)
+    setInputValue('') // Очищаем input через состояние
   }
 
-  function removeItem(event){
-    const closestListItem = event.target.closest('li')
-    closestListItem.remove()
-    setCount(() => {
-      const numCount = Number(count)
-      return numCount - 1
-    })
+  function removeItem(indexToRemove){ // Принимаем индекс вместо event
+    setItemsArray(prevItems => prevItems.filter((_, index) => index !== indexToRemove))
+    setCount(prevCount => prevCount - 1)
   }
 
   function removeAllItems(){
-    setItemsArray(() => {
-      const nullArray = []
-      return nullArray
-    })
-    setCount('0')
+    setItemsArray([])
+    setCount(0)
   }
 
   function onChange(event){
     setValue(event.target.value)
   }
 
-  const [value, setValue] = useState('')
-  const [itemsArray, setItemsArray] = useState([])
-  const [count, setCount] = useState('0')
+  // Функция для обновления значения input в FormAdd
+  function onInputChange(event) {
+    setInputValue(event.target.value)
+  }
+
+  const filteredItems = itemsArray.filter(element =>
+    element.toLowerCase().includes(value.toLowerCase())
+  )
 
   return (
     <>
       <h1 className="app-heading">To Do List</h1>
-      <FormAdd onClick={addItem}/>
+      <FormAdd
+        onClick={addItem}
+        onInputChange={onInputChange}
+        inputValue={inputValue}
+      />
       <FormSearch onChange={onChange} value={value}/>
       <div className="app-actions">
-        <span className="app-actions__span-total">Total tasks: <span>{count}</span></span>
-        <button type='button' id="app-actions__btn" onClick={removeAllItems}>Delete All</button>
+        <span className="app-actions__span-total">
+          Total tasks: <span>{count}</span>
+        </span>
+        <button type='button' id="app-actions__btn" onClick={removeAllItems}>
+          Delete All
+        </button>
       </div>
       <ul className="list">
+        {filteredItems.map((element, index) => (
+          <ListItem
+            key={index}
+            title={element}
+            onClick={() => removeItem(index)} // Передаем индекс
+          />
+        ))}
       </ul>
-      {
-        itemsArray.filter((element) => {
-          if (element.includes(value)){
-            return element
-          }
-        })
-          .map((element, index) => {
-            return <ListItem key={index} title={element} onClick={(event) => removeItem(event)}/>
-        })
-      }
     </>
   )
 }
