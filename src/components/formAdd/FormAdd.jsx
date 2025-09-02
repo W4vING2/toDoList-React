@@ -9,7 +9,7 @@ export default function formAdd(props) {
         id="form-add__input"
         placeholder="New task title"
         value={props.inputValue}
-        onChange={onInputChange}
+        onChange={props.onInputChange}
       />
       <button
         type="button"
