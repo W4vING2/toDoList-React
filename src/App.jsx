@@ -5,8 +5,10 @@ import ListItem from "./components/ListItem/ListItem.jsx";
 import {useState} from "react";
 
 export default function App() {
+
   function addItem(){
     const title = document.querySelector('#form-add__input').value
+    if (!title) return
     setItemsArray(() => {
       const newArray = [...itemsArray, title]
       return newArray

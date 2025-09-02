@@ -1,4 +1,4 @@
-@use '../../index';
+@use '../../styles/mixins';
 
 #form-add{
   display: flex;
@@ -6,7 +6,7 @@
   width: 356px;
 
   &__input{
-    @include index.input-style();
+    @include mixins.input-style();
   }
   &__btn{
     margin-left: 16px;
@@ -22,10 +22,18 @@
     line-height: 100%;
     transition: var(--transition);
     filter: drop-shadow(0 4px 4px #000);
-    &:hover{
-      background-color: var(--pr-white);
-      color: var(--pr-black);
-    }
   }
 }
 
+@media (hover: hover){
+  #form-add__btn:hover{
+    background-color: var(--pr-white);
+    color: var(--pr-black);
+  }
+}
+@media (hover: none){
+  #form-add__btn:active{
+    background-color: var(--pr-white);
+    color: var(--pr-black);
+  }
+}

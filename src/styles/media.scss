@@ -1,0 +1,11 @@
+@media (hover: hover) {
+  #app-actions__btn:hover::after{
+    width: 100%;
+  }
+}
+
+@media (hover: none) {
+  #app-actions__btn:active::after{
+    width: 100%;
+  }
+}
