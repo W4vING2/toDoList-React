@@ -21,3 +21,9 @@
     touch-action: none;
   }
 }
+
+@media (max-width: 600px){
+  #form-search__btn{
+    top: 15px;
+  }
+}
