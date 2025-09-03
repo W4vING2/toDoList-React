@@ -17,7 +17,7 @@ export default function App() {
     setInputValue('')
   }
 
-  function removeItem(indexToRemove){ // Принимаем индекс вместо event
+  function removeItem(indexToRemove){ 
     setItemsArray(prevItems => prevItems.filter((_, index) => index !== indexToRemove))
     setCount(prevCount => prevCount - 1)
   }
@@ -31,7 +31,7 @@ export default function App() {
     setValue(event.target.value)
   }
 
-  // Функция для обновления значения input в FormAdd
+
   function onInputChange(event) {
     setInputValue(event.target.value)
   }
